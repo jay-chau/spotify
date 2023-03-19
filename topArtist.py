@@ -78,7 +78,7 @@ def artist_plot(data: pd.DataFrame, yearColumn: str = 'whichYear') -> list[plt.f
     ## General Plotting
     fig,ax = plotting.gen_plot()
     plotting.set_label(x=None, y='Hours', title=None)
-    plotting.set_axis(x=[data[yearColumn].min(),yearColumn.max()],y=[0,1.01])
+    plotting.set_axis(x=[data[yearColumn].min(),data[yearColumn].max()],y=[0,1.01])
     plt.yticks(np.linspace(0,1,6), [int(x) for x in np.linspace(0,plotting.assumption['max_value_x'],6)])
 
     ## Data
