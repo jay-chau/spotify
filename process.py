@@ -7,12 +7,13 @@ def read_raw(folder: str = 'rawData', timeZone: str = 'UTC', dateColumn: str = '
     data = pd.DataFrame()
     for file in os.listdir(folder):
         try:
-            temp = pd.read_json(f"{folder}\{file}", orient="columns")
+            if ".json" in file:
+                temp = pd.read_json(f"{folder}\{file}", orient="columns")
 
-            ## Convert Time from UTC to local
-            temp[dateColumn] = pd.to_datetime(temp[dateColumn], utc=True).dt.tz_convert(pytz.timezone(timeZone))
+                ## Convert Time from UTC to local
+                temp[dateColumn] = pd.to_datetime(temp[dateColumn], utc=True).dt.tz_convert(pytz.timezone(timeZone))
 
-            data = pd.concat([data, temp])
+                data = pd.concat([data, temp])
         except:
             print(f"Issue reading file {file}")
     return data
