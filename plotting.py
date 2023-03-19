@@ -13,7 +13,7 @@ assumption = {
     'text_size': 8
 }
 
-def gen_plot(x=15,y=9, dpi=100):
+def gen_plot(x=10.24,y=5.76, dpi=200):
     fig, ax = plt.figure(figsize=(x,y), dpi=dpi, facecolor="black"), plt.axes()
     ax.grid(True, axis='both',linestyle="--", linewidth=0.25, color=colrs['grey_trans'])
     ax.set_axisbelow(True)

@@ -74,11 +74,11 @@ def artist_play(data: pd.DataFrame,
 
     return d
 
-def artist_plot(data: pd.DataFrame) -> list[plt.figure, plt.axes]:
+def artist_plot(data: pd.DataFrame, yearColumn: str = 'whichYear') -> list[plt.figure, plt.axes]:
     ## General Plotting
-    fig,ax = plotting.gen_plot(x=10.24,y=5.76, dpi=200)
+    fig,ax = plotting.gen_plot()
     plotting.set_label(x=None, y='Hours', title=None)
-    plotting.set_axis(x=[2017,2023],y=[0,1.01])
+    plotting.set_axis(x=[data[yearColumn].min(),yearColumn.max()],y=[0,1.01])
     plt.yticks(np.linspace(0,1,6), [int(x) for x in np.linspace(0,plotting.assumption['max_value_x'],6)])
 
     ## Data
